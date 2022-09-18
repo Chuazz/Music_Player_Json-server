@@ -1,0 +1,206 @@
+<!-- Ngô Văn Sơn - 2001202222 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zing MP3</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Roboto+Mono:wght@300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/m_p.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/reponsive.css">
+</head>
+<body>
+    <div class="grid wide h-100 zing-mp3">
+        <!-- header -->
+        <div id="header" class="m-0 s-0">
+            <div class="row-container row ali-center">
+                <div class="row-item h-6 l-6">
+                    <h1 >
+                        Now Playing
+                    </h1>
+                </div>
+
+                <div class="row-item h-6 l-6">
+                    <h1 class="row ali-center play-with m-0 s-0">
+                        <p class="play-with__item most-play active relative">
+                            <span class="relative ">Mostly Played</span>
+                        </p>
+    
+                        <p class="play-with__item like-song relative">
+                            <span class="relative ">Liked Songs</span>
+                        </p>
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- main content -->
+        <div id="main-section">
+            <div class="row-container row ali-center">
+                <!-- current song playing -->
+                <div class=" row-item main-item h-6 l-6 m-12 s-12">
+                    <div class="current-song h-100 relative row flex-column ali-center">
+                        <div class=" w-100 jus-between ma-t-16 row m-0 s-0">
+                            <div class="row ali-center song__volume">
+                                <i class="fa-solid fa-volume-high"></i>
+                                <input type="range" step="0.1" value="1" min="0" max="1">
+                            </div>
+            
+                            <div class="next-song">
+                                Next - <span></span>
+                            </div>
+                        </div>
+            
+                        <h4 class="now-play h-0 l-0">Now Playing</h4>
+    
+                        <div class="current__img">
+                            <img src="" alt="">
+                        </div>
+            
+                        <h4 class="current__song-name text-center"></h4>
+
+                        <h5 class="current__singer m-0 s-0"></h5>
+            
+                        <div class="progess">
+                            <input type="range" name="" id="" step="0.000001" value="0" min="0" max="100">
+            
+                            <audio src=""></audio>
+
+                            <div class="row jus-between time-count">
+                                <div class="time-count__item relative">
+                                    <p class="time-start">00:00</p>
+                               
+                                    <div class="key-shortcut remove row ali-center jus-center">
+                                        <span class="ma-r-8">(+10s)</span>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </div>
+                                </div>
+    
+                                <div class="time-count__item relative">
+                                    <p class="time-end">00:00</p>
+                               
+                                    <div class="key-shortcut remove row ali-center jus-center">
+                                        <i class="fa-solid fa-arrow-left"></i>
+                                        <span class="ma-l-8">(-10s)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="song__control row ali-center relative w-100 jus-center">
+                            <div class="control__icon">
+                                <i class="fa-solid fa-arrow-rotate-right"></i>
+                               
+                                <div class="key-shortcut remove row ali-center jus-center">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-l"></i>
+                                </div>
+                            </div>
+                            <div class="control__icon">
+                                <i class="fa-solid fa-backward-step"></i>
+                               
+                                <div class="key-shortcut remove row ali-center jus-center">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </div>
+                            </div>
+                            <div class="play-pause__toggle control__icon">
+                                <i class="fa-solid fa-play"></i>
+                                <i class="fa-solid fa-pause"></i>
+                               
+                                <div class="key-shortcut remove row ali-center jus-center">
+                                    <img src="https://raw.githubusercontent.com/Chuazz/Music_PLayer_1.0/main/assets/img/space-bar.png" alt="" class="">
+                                </div>
+                            </div>
+                            <div class="control__icon">
+                                <i class="fa-solid fa-forward-step"></i>
+                               
+                                <div class="key-shortcut remove row ali-center jus-center">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                            </div> 
+                            <div class="control__icon">
+                                <i class="fa-solid fa-shuffle"></i>
+                               
+                                <div class="key-shortcut remove row ali-center jus-center">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <i class="fa-solid fa-n"></i>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <i class="fa-solid fa-bars h-0 l-0">
+                            <ul class="change-tab remove">
+                                <li class="like-song border-t-lr-radius">
+                                    <a href="#">Bài hát đã thích</a>
+                                </li>
+    
+                                <li class="update">
+                                    <a href="./assets/html/add-form/update-song.html">Cập nhập danh sách</a>
+                                </li>
+    
+                                <li class="most-play">
+                                    <a href="#">Được phát nhiều nhất</a>
+                                </li>
+    
+                                <li class="delete border-b-lr-radius">
+                                    <a href="#">Xóa LocalStorage</a>
+                                </li>
+                            </ul>
+                        </i>
+                    </div>
+                </div>
+
+                <!-- songs in list -->
+                <div class="row-item main-item h-6 l-6 m-12 s-12">
+                    <div class="song-container relative h-100">
+                        <h1 class="text-center remove alert-content">Opps, bạn chưa tym bài nào hết😁</h1>
+
+                        <div class="song-list h-100"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div id="footer">
+            <div class="row-container row ali-center">
+                <!-- col 1 -->
+                <div class="row-item h-6 l-6 m-12 s-12">
+                    <div class="row jus-between ali-center">
+                        <div class="m-0 s-0">
+                            <a href="#" class="update-song__box delete-local">Xóa LocalStorage</a>
+                        </div>
+                        
+                        <div class="m-0 s-0">
+                            <a href="" target="_blank" class="update-song__box">listUpdate song </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- col 2 -->
+                <div class="row-item h-6 l-6 m-0 s-0">
+                    <div class="total-song m-0 row ali-center jus-end relative">
+                        <span></span> 
+                        <p class="p-l-8">songs in the list</p>
+                    </div>
+                </div>
+
+                <div class="h-12 l-12 m-0 s-0">
+                    <h2 class="shortcut-note text-center">Ấn giữ Alt để thấy phím tắt</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+body {
+    background: linear-gradient(to top,rgb(133 162 223 / 94%), rgb(215 229 236));
+    background: linear-gradient(to left, #ec6eadba, #3493e6b5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 100vh;
+    padding-top: 40px;
+}
+
+*::-webkit-scrollbar {
+    width: 7px;
+}
+ 
+*::-webkit-scrollbar-thumb {
+    background: rgba(64, 159, 236, 0.733); 
+    border-radius: 5px;
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 2.7rem;
+    color: #333;
+    font-family: 'Concert One', cursive;
+}       
+
+i:active {
+    opacity: 0.7;
+}
+
+i {
+    cursor: pointer;
+}
+
+button:active {
+    opacity: 0.7;
+}
+
+img {
+    object-fit: cover;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+h5 {
+    font-size: 1.6rem;
+    color: #aaa;
+}
+
+.row-container {
+    margin: 0 -12px;
+}
+
+.row-item {
+    padding: 0 12px;
+}
+/*========================================== Header ==========================================*/
+
+/*======================================== Main Section ========================================*/
+#main-section {
+    margin: 24px 0;
+}
+
+.main-item {
+    height: 480px;
+}
+
+.current-song {
+    background: #fcfcfc;
+    border-radius: 20px;
+    padding: 0 40px;
+}
+
+.current-song.playing .fa-pause {
+    display: block;
+}
+
+.current-song.playing .fa-play {
+    display: none;
+}
+
+.current-song .fa-pause {
+    display: none;
+}
+
+.progess input,
+.song__volume input {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #ccc;
+    opacity: 0.7;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+}
+
+.progess input::-webkit-slider-thumb,
+.song__volume input::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgb(12, 123, 183);
+    cursor: pointer;
+}
+
+.song__volume {
+    margin-right: 4px;
+}
+
+.song__volume i {
+    font-size: 20px;
+    width: 30px;
+}
+
+.song__volume input {
+    width: 0;
+    opacity: 0;
+    flex: 1;
+    transform-origin: left;
+}
+
+.song__volume input.animateIn {
+    animation: fadeIn 0.3s linear forwards;
+}
+
+.song__volume input.animateOut {
+    animation: fadeOut 0.3s linear forwards;
+}
+
+@keyframes fadeIn {
+    0%{
+        width: 0;
+        opacity: 0;
+    }
+    100%{
+        width: 100px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0%{
+        width: 100px;
+        opacity: 1;
+    }
+    100%{
+        width: 0;
+        opacity: 0;
+    }
+}
+
+.next-song {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #aaa;
+}
+
+.next-song span {
+    color: #222;
+    font-weight: bold;
+}
+
+.now-play{
+    padding: 24px 0 0;
+    color: rgb(44 13 240 / 70%);
+    font-family: 'Concert One', cursive;
+    font-size: 2.2rem;
+}
+
+.current__img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 32px;
+}
+
+.current__img img {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 10px 10px 8px rgba(17, 43, 98, 0.15);
+    border-radius: 50%;
+}
+
+.progess input:hover {
+    opacity: 1;
+}
+
+.progess {
+    padding: 20px 0 14px;
+    width: 100%;
+}
+
+.time-start, .time-end {
+    font-size: 1.4rem;
+    color: gray;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.song__control .fa-play,
+.song__control .fa-pause{
+    border-radius: 50%;
+    background: linear-gradient(54deg, #223cb27d, #2e5fb9d6);
+    color: rgb(255, 255, 255);
+}
+
+.song__control{
+    margin: 0 -15px;
+}
+
+.song__control i{
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.9rem;
+    width: 50px;
+    height: 50px;
+}
+
+.control__icon{
+    padding: 0 15px;
+    position: relative;
+}
+    
+.control__icon i.active{
+    color: #1640f7;
+}
+
+.song-list{
+    padding-right: 8px;
+    overflow: auto;
+}
+
+.time__left {
+    margin-left: 14px;
+}
+
+.total-song {
+    font-family: 'Concert One', cursive;
+    margin-right: 15px;
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.song__item{
+    padding-bottom: 24px;
+}
+
+.song__item:last-child{
+    padding-bottom: 0;
+}
+
+.song__item-body{
+    background: #fcfcfc;
+    height: 120px;
+    border-radius: 10px;
+    padding: 0 24px;
+    color: #222;
+    cursor: pointer;
+}
+
+.song__item-body.active{
+    background: linear-gradient(45deg, #5b63d1bd, #1ac1c48c);
+    background: linear-gradient(to left, #ec6eadba, #3493e6b5);
+
+}
+
+.song__item-body.active p,
+.song__item-body.active h4,
+.song__item-body.active i{
+    color: #fff;
+}
+
+.song__item-body.active .song__duration span{
+    background-color: #fff;
+}
+
+.song-id{
+    font-size: 1.6rem;
+    margin-right: 24px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.song__name{
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.song__img{
+    width: 60px;
+    height: 60px;
+    margin-right: 24px;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgb(0 0 0 / 40%);
+}
+
+.song__dct{
+    flex: 1;
+}
+
+.song__duration{
+    margin-top: 5px;
+    font-size: 1.3rem;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.song__duration span{
+    position: relative;
+    height: 12px;
+    width: 4px;
+    left: 10px;
+    margin-right: 12px;
+    background: #000;
+    border-radius: 20px;
+}
+
+.song__duration span::after{
+    position: absolute;
+    content: "";
+    width: 3.5px;
+    height: 8px;
+    background: inherit;
+    left: -7px;
+    bottom: 0;
+    border-radius: 20px;
+}
+
+.song__duration span::before{
+    position: absolute;
+    content: "";
+    width: 3.5px;
+    height: 15px;
+    background: inherit;
+    bottom: 0;
+    border-radius: 20px;
+    right: -7px;
+}
+
+.song__author{
+    font-size: 1.35rem;
+    color: #aaa;
+}
+/*===============================================================================================*/
+
+
+.update-song__box{
+    font-size: 1.7rem;
+    color: #333;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.play-with{
+    margin: 0 -16px;
+}
+
+.play-with__item{
+    padding: 0 16px;
+    cursor: pointer;
+}
+
+.play-with__item:active{
+    opacity: 0.7;
+}
+
+.play-with__item.active span::after{
+    display: block;
+}
+
+.play-with__item:first-child::before{
+    position: absolute;
+    content: "";
+    display: block;
+    height: 40px;
+    width: 4px;
+    background: #333;
+    right: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 10px;
+}
+
+.play-with__item span::after{
+    position: absolute;
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #333;
+    right: 0;
+    border-radius: 10px;
+    display: none;
+}
+
+.fa-heart{
+    font-size: 2.2rem;
+}
+
+.fa-heart.active{
+    color: #ff1231 !important;
+}
+
+.fa-bars{
+    position: absolute;
+    font-size: 2.5rem !important;
+    top: 20px;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.fa-bars:active{
+    opacity: 1;
+}
+
+.fa-download{
+    font-size: 2rem;
+}
+
+.change-tab{
+    position: absolute;
+    width: 270px;
+    right: -25px;
+    top: 30px;
+    background: #fff;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-weight: 500;
+    font-size: 1.7rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+}
+
+.change-tab li a{
+    padding: 8px 12px;
+}
+
+.change-tab li:hover a{
+    background: gray;
+    color: #fff;
+}
+
+.shortcut-note{
+    margin-top: 40px;
+    font-size: 1.5rem;
+    color: #4f4c4c;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.alert-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.key-shortcut{
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 60px;
+    height: 30px;
+    transform: translateX(-50%);
+    background: #ccc;
+    border-radius: 5px;
+}
+
+.key-shortcut i{
+    width: auto;
+    line-height: initial;
+    height: auto;
+    font-size: 1.9rem;
+}
+
+.key-shortcut .fa-plus{
+    font-size: 1.2rem;
+    padding-right: 6px;
+}
