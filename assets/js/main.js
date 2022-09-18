@@ -117,8 +117,7 @@ const myApp = {
     },
 
     // Hiển thị bài hát hiện tại
-    loadCurrentSong: function (songList) {
-        console.log(songList)
+    loadCurrentSong: function (songList = JSON.parse(sessionStorage.getItem("songList"))) {
         var currentSong = songList[this.currentIndex];
         var songContents = myVar.$$(".song__item-body");
 
@@ -255,7 +254,7 @@ const myApp = {
         if(this.currentIndex >= songList.length){
             this.currentIndex = 0;
         }
-        this.loadCurrentSong(songList);
+        this.loadCurrentSong();
         this.scrollToSong();
         myVar.audio.play();
     },
@@ -687,13 +686,11 @@ const myApp = {
     // Thực thi chương trình
     start: function () {
         this.loadSongList();
-        var songList = this.getSongList();
-        console.log(songList)
+        var songList = JSON.parse(sessionStorage.getItem("songList"));
         myFunc.renderSong(songList, myVar.playlist);
         this.renderConfig();
-        this.loadCurrentSong(songList);
+        this.loadCurrentSong();
         this.handleEvents();
     }
 };
-
 myApp.start();
