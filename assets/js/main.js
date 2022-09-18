@@ -2,6 +2,7 @@ import * as myVar from "./module/variable.js";
 import * as myFunc from "./module/function.js";
 
 const songAPI = "http://localhost:3000/songs";
+var songList = JSON.parse(localStorage.getItem("songList"));
 var likedSong = [];
 var likedSongId = [];
 var songedId = [];
@@ -102,27 +103,26 @@ const myApp = {
     },
 
     // Lấy danh sách bài hát
-    loadSongList: function (){
+    loadSongList: function () {
         fetch(songAPI)
             .then(response => {
                 return response.json();
             })
             .then(data => {
-                sessionStorage.setItem("songList", JSON.stringify(data));
-            });
-    },
-
-    getSongList: function () {
-        return JSON.parse(sessionStorage.getItem("songList")) || [];
+                songList = localStorage.setItem("songList", JSON.stringify(data));
+                myFunc.renderSong(data, myVar.playlist);
+                this.loadCurrentSong(songList);
+            })
     },
 
     // Hiển thị bài hát hiện tại
-    loadCurrentSong: function (songList = JSON.parse(sessionStorage.getItem("songList"))) {
-        var currentSong = songList[this.currentIndex];
+    loadCurrentSong: function (songs = songList || JSON.parse(localStorage.getItem("songList"))) {
+        console.log(this.currentIndex)
+        var currentSong = songs[this.currentIndex];
         var songContents = myVar.$$(".song__item-body");
 
         myVar.audio.load();
-        if(this.currentIndex === - 1 || this.currentIndex === songList.length){
+        if(this.currentIndex === - 1 || this.currentIndex === songs.length){
             this.currentIndex = 0;
         }
 
@@ -137,11 +137,11 @@ const myApp = {
             songContents[this.currentIndex].classList.add("active");
         }
 
-        if(this.currentIndex === songList.length-1){
-            myVar.nextSong.innerText = `${songList[0].name}`
+        if(this.currentIndex === songs.length-1){
+            myVar.nextSong.innerText = `${songs[0].name}`
         }
         else{
-            myVar.nextSong.innerText = `${songList[this.currentIndex + 1].name}`
+            myVar.nextSong.innerText = `${songs[this.currentIndex + 1].name}`
         }
 
         myVar.currSongName.innerHTML = `${currentSong.name}`;
@@ -685,11 +685,15 @@ const myApp = {
 
     // Thực thi chương trình
     start: function () {
-        this.loadSongList();
-        var songList = JSON.parse(sessionStorage.getItem("songList"));
-        myFunc.renderSong(songList, myVar.playlist);
-        this.renderConfig();
-        this.loadCurrentSong();
+        if(songList){
+            myFunc.renderSong(songList, myVar.playlist);
+            this.loadCurrentSong();
+            this.renderConfig();
+        }
+        else{
+            this.loadSongList();
+        }
+
         this.handleEvents();
     }
 };
