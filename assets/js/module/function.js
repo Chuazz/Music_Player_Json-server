@@ -10,12 +10,9 @@ export function convertDriveLink(importLink){
         var linkId = driveLink.split('/');
 
         finalLink = finalLink.concat(concatLink, linkId[5]);
+        return finalLink;
     }
-    else{
-        return undefined;
-    }
-
-    return finalLink;
+    return undefined;
 }
 
 export function addZeroBefore (number) {
@@ -44,7 +41,7 @@ export function renderTimeDuration (songList) {
                 songList[i].duration = song.querySelector("audio").duration;
                 song.querySelector(".song__duration p").innerText = convertToMinute(songList[i].duration);
             });
-            sessionStorage.setItem("songList", JSON.stringify(songList));
+            localStorage.setItem("songList", JSON.stringify(songList));
         });
     }
 }
