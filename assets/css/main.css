@@ -16,9 +16,9 @@ body {
 
 h1 {
     font-weight: 500;
-    font-size: 2.7rem;
-    color: #333;
-    font-family: 'Concert One', cursive;
+    font-size: 2.3rem;
+    color: #000 !important;
+    font-family: 'Inter', sans-serif;
 }       
 
 i:active {

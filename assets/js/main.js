@@ -117,7 +117,6 @@ const myApp = {
 
     // Hiển thị bài hát hiện tại
     loadCurrentSong: function (songs = songList || JSON.parse(localStorage.getItem("songList"))) {
-        console.log(this.currentIndex)
         var currentSong = songs[this.currentIndex];
         var songContents = myVar.$$(".song__item-body");
 
@@ -318,7 +317,6 @@ const myApp = {
         var currentSongList = songList;
         var mostlyPlay = e.target.closest(".most-play");
         var liked = e.target.closest(".like-song");
-        var deleteLocal = e.target.closest(".delete");
         
         if(myVar.$(".play-with__item.active")){
             myVar.$(".play-with__item.active").classList.remove("active")
@@ -358,11 +356,6 @@ const myApp = {
         if(liked && likedSong.length > 0 || mostlyPlay){
             this.loadCurrentSong();
             this.renderConfig();
-        }
-
-        if(deleteLocal){
-            window.location.reload();
-            localStorage.clear();
         }
     },
 
@@ -674,12 +667,6 @@ const myApp = {
                     break;
                 }
             }
-        });
-
-        // Xóa localStorage
-        myVar.deleteLocal.addEventListener("click", () => {
-            window.location.reload();
-            localStorage.clear();
         });
     },
 
