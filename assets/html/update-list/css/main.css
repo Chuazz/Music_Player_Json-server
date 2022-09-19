@@ -1,0 +1,132 @@
+#update-list{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+}
+
+.nav-item, button{
+    padding: 12px 24px;
+    font-size: 1.5rem;
+    font-family: 'Inter', sans-serif;
+    border-radius: 24px;
+    cursor: pointer;
+    background: var(--bg);
+    color: #fff;
+    border: none;
+}
+
+.nav-item:hover{
+    background: var(--hovar-bg);
+}
+
+.nav-item:nth-child(2){
+    margin: 0 24px;
+}
+
+.nav-item:nth-child(2) p{
+    color: #fff;
+}
+/* ================================================= */
+#add-song-form{
+    background: #fff;
+    border-radius: 10px;
+    margin: 40px 0 0 0;
+    padding: 24px 40px;
+}
+
+.form__group{
+    padding-bottom: 32px;
+    position: relative;
+}
+
+#add-song-form label{
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.form__control{
+    width: 100%;
+    outline: none;
+    height: 40px;
+    padding-left: 12px;
+    margin: 8px 0 0 0;
+    border: 1px solid #878787;
+    display: block;
+}
+
+input[type=file]{
+    position: relative;
+}
+
+input[type=file]::-webkit-file-upload-button{
+    display: none;
+}
+
+
+input[type=file]::before{
+    height: 24px;
+    display: inline-block;
+    content: "";
+}
+
+input[type=file]::after{
+    display: inline-block;
+    position: absolute;
+    left: 12px;
+    content: "";
+    width: 388px;
+    height: 38px;
+    padding-left: 12px;
+    margin-left: -12px;
+}
+
+.choose__file{
+    position: absolute;
+    background: #ccc;
+    border-radius: 5px;
+    z-index: 99;
+    font-size: 1.3rem;
+    width: 50px;
+    padding: 4px 0;
+    text-align: center;
+    cursor: pointer;
+    top: 50%;
+    right: 7px;
+    transform: translateY(-50%);
+}
+
+.choose__file:active{
+    opacity: 0.7;
+}
+
+.form__warning{
+    display: none;
+    position: absolute;
+    font-size: 1.2rem;
+    color: rgb(255, 54, 54);
+    font-weight: bold;
+}
+
+.form__group--invalid .form__warning{
+    display: block;
+}
+
+.form__group--invalid label{
+    color: rgb(247, 44, 44);
+}
+
+.form__group--invalid .form__control{
+    background: rgba(233, 98, 98, 0.5);
+    border: 1px solid rgb(246, 81, 81);
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+}
+
+.form__group--invalid .form__control:hover{
+    background: #fff;
+}
+
+.form__group--invalid .choose__file{
+    background: rgb(231 49 49);
+    color: #f2d7d7;
+}

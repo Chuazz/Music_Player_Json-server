@@ -1,14 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhập danh sách</title>
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Concert+One&family=Roboto+Mono:wght@300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/m_p.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
-<body>
-    <div id="update-list">
 
+<body>
+    <div id="root">
+        <div class="grid wide">
+            <div id="update-list">
+                <div id="header">
+                    <div class="navbar row ali-center jus-end">
+                        <div style="--bg: #ffc0c7; --hover-bg: #ffb3bb" class="nav-item text-center relative">
+                            <p>Sửa 1 bài hát</p>
+                        </div>
+                        <div style="--bg: #04aa6d; --hover-bg: #059862" class="nav-item text-center">
+                            <p>Xóa bài hát</p>
+                        </div>
+                        <div style="--bg: #fff4a3; --hover-bg: #fff080" class="nav-item text-center">
+                            <p>Thêm 1 bài hát</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content">
+                    <div class="add-song">
+                        <form action="" method="post" id="add-song-form">
+                            <!-- Song name -->
+                            <div class="form__group ">
+                                <label for="fullname">Tên bài hát</label>
+                                <input type="text" name="fullname" rule="required|fullname" id="fullname"
+                                    class="form__control" placeholder="Tri kỉ">
+                                <span class="form__warning"></span>
+                            </div>
+
+                            <!-- Song singer -->
+                            <div class="form__group">
+                                <label for="fullname">Tên ca sĩ</label>
+                                <input type="fullname" name="fullname" rule="required|fullname" id="fullname" class="form__control"
+                                    placeholder="Phan Mạnh Quỳnh">
+                                <span class="form__warning"></span>
+                            </div>
+
+                            <!-- Song img -->
+                            <div class="form__group">
+                                <label for="avatar">Ảnh bài hát
+                                    <span class="choose__file">Chọn</span>
+                                </label>
+                                <input type="file" name="avatar" rule="required" id="avatar"
+                                    accept=".jpg, .png, .gif, .avif, .jpeg, .svg, .webp, .apng" class="form__control">
+                                <span class="form__warning"></span>
+                            </div>
+
+                            <!-- Song path -->
+                            <div class="form__group">
+                                <label for="path">Đường dẫn</label>
+                                <div class="row ali-center">
+                                    <div class="h-6">
+                                        <input type="text" name="path" rule="required" id="path" class="form__control"
+                                        placeholder="Link google drive nha">
+                                    </div>
+
+                                    <div class="h-6">
+                                        <input type="file" name="avatar" rule="required" id="avatar"
+                                        accept=".jpg, .png, .gif, .avif, .jpeg, .svg, .webp, .apng" class="form__control">
+                                    </div>
+                                </div>
+                                <span class="form__warning"></span>
+                            </div>
+
+                            <div class="row jus-end">
+                                <button style="--bg: #04aa6d; --hover-bg: #059862">Đăng ký</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="./js/validate.js"></script>
+    <script type="module" src="./js/main.js"></script>
+
+    <script>
+        var formValidate = new Validate("#add-song-form");
+    </script>
 </body>
 </html>
