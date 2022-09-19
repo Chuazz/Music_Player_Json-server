@@ -1,7 +1,7 @@
 import * as myVar from "./module/variable.js";
 import * as myFunc from "./module/function.js";
 
-const songAPI = "http://localhost:3000/songs";
+const songAPI = "https://raw.githubusercontent.com/Chuazz/Music_Player_Json-server/main/db.json";
 var songList = JSON.parse(localStorage.getItem("songList"));
 var likedSong = [];
 var likedSongId = [];
