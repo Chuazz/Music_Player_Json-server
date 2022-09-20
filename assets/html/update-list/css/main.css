@@ -153,5 +153,5 @@ input[type=file]::after{
 .remove-song__container{
     margin: 0 -12px;
     overflow-y: auto;
-    height: 600px;
+    height: 500px;
 }
