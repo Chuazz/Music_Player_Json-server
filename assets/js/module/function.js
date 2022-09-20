@@ -35,13 +35,15 @@ export function convertToMinute (second) {
 };
 
 export function renderTimeDuration (songList) {
-    if(myVar.audio && songList[0].duration === null){
-        myVar.audio.addEventListener("loadedmetadata", () => {
+    var audio = document.createElement("audio");
+    audio.src = convertDriveLink(songList[0].path);
+
+    if(songList[0].duration === null){
+        audio.addEventListener("loadedmetadata", () => {
             myVar.$$(".song__item").forEach((song, i) => {
                 songList[i].duration = song.querySelector("audio").duration;
                 song.querySelector(".song__duration p").innerText = convertToMinute(songList[i].duration);
             });
-            localStorage.setItem("songList", JSON.stringify(songList));
         });
     }
 }
