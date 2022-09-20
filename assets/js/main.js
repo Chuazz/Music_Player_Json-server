@@ -1,7 +1,7 @@
 import * as myVar from "./module/variable.js";
 import * as myFunc from "./module/function.js";
 
-var songList =  JSON.parse(localStorage.getItem("songList"));
+var songList = JSON.parse(localStorage.getItem("songList"));
 var likedSong = [];
 var likedSongId = [];
 var songedId = [];
@@ -336,31 +336,31 @@ const myApp = {
                 myVar.$$(".song__content-body").forEach(songContent => {
                     songContent.querySelector(".fa-heart").classList.add("active");
                 });
-    
-                myFunc.renderSong(currentSongList, myVar.playlist);
             }
             liked.classList.add("active");
         }
 
-        if(mostlyPlay){
+        else if(mostlyPlay){
             this.setDefault();
 
             myVar.alertContent.classList.add("remove");
             myVar.playlist.classList.remove("remove");
             
             mostlyPlay.classList.add("active");
-            myFunc.renderSong(songList, myVar.playlist);
         }
 
-        if(liked && likedSong.length > 0 || mostlyPlay){
-            this.loadCurrentSong();
+        if(currentSongList.length > 0){
+            myFunc.renderSong(currentSongList, myVar.playlist);
             this.renderConfig();
+            this.loadCurrentSong(currentSongList);
         }
     },
 
     // Lấy danh sách bằng Id
     getSongByListId: function (listId) {
         likedSong = [];
+        songList = JSON.parse(localStorage.getItem("songList"))
+
         for (let i = 0; i < listId.length; i++) {
             const songId = listId[i];
             
@@ -508,11 +508,11 @@ const myApp = {
                 myVar.audio.play();
             }
 
-            if(downloadBtn){
+            else if(downloadBtn){
                 window.open(`${parent.querySelector("audio").src}`)
             }
 
-            if(likeSong){
+            else if(likeSong){
                 var index = Number(parent.dataset.index);
                 e.target.classList.toggle("active");
 

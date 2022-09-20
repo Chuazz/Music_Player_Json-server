@@ -28,79 +28,51 @@
             <div id="update-list">
                 <div id="header">
                     <div class="navbar row ali-center jus-end">
-                        <div style="--bg: #fff4a3; --hover-bg: #fff080" class="nav-item text-center active">
+                        <div style="--bg: #fff4a3; --hover-bg: #fff080" class="nav-item text-center" data-index="2">
                             <p>Sửa 1 bài hát</p>
                         </div>
-                        <div style="--bg: #ffc0c7; --hover-bg: #ffb3bb" class="nav-item text-center">
+                        <div style="--bg: #ffc0c7; --hover-bg: #ffb3bb" class="nav-item text-center" data-index="1">
                             <p>Xóa bài hát</p>
                         </div>
-                        <div style="--bg: #04aa6d; --hover-bg: #059862" class="nav-item text-center">
+                        <div style="--bg: #04aa6d; --hover-bg: #059862" class="nav-item text-center" data-index="0">
                             <p>Thêm 1 bài hát</p>
                         </div>
                     </div>
                 </div>
 
                 <div id="content">
-                    <div class="add-song remove">
+                    <div class="command-song add-song active">
                         <form action="" method="post" id="add-song-form">
                             <!-- Song name -->
                             <div class="form__group ">
-                                <label for="fullname">Tên bài hát</label>
-                                <input type="text" name="fullname" rule="required|fullname" id="fullname"
+                                <label for="songName">Tên bài hát</label>
+                                <input type="text" name="songName" rule="required|fullname" id="songName"
                                     class="form__control" placeholder="Tri kỉ">
                                 <span class="form__warning"></span>
                             </div>
 
                             <!-- Song singer -->
                             <div class="form__group">
-                                <label for="fullname">Tên ca sĩ</label>
-                                <input type="fullname" name="fullname" rule="required|fullname" id="fullname"
+                                <label for="singerName">Tên ca sĩ</label>
+                                <input type="singerName" name="singerName" rule="required|fullname" id="singerName"
                                     class="form__control" placeholder="Phan Mạnh Quỳnh">
                                 <span class="form__warning"></span>
                             </div>
 
                             <!-- Song img -->
-                            <div class="row ali-center">
-                                <div class="form__group h-5">
-                                    <label for="path">Đường dẫn ảnh</label>
-                                    <input type="text" name="path" id="path" placeholder="Link nào cũng được"
-                                        class="form__control path-control">
-                                    <span class="form__warning"></span>
-                                </div>
-
-                                <p class="h-2 text-center" style="font-size: 1.5rem; font-weight: bold;">Hoặc</p>
-
-                                <div class="form__group h-5">
-                                    <label for="devicePathImg">Chọn từ thiết bị
-                                        <span class="choose__file">Chọn</span>
-                                    </label>
-                                    <input type="file" name="devicePathImg" id="devicePathImg"
-                                        accept=".jpg, .png, .gif, .avif, .jpeg, .svg, .webp, .apng"
-                                        class="form__control">
-                                    <span class="form__warning"></span>
-                                </div>
+                            <div class="form__group">
+                                <label for="songImg">Đường dẫn ảnh</label>
+                                <input type="text" name="songImg" rule="required" id="songImg" placeholder="Link nào cũng được"
+                                    class="form__control path-control">
+                                <span class="form__warning"></span>
                             </div>
 
                             <!-- Song path -->
-                            <div class="row ali-center">
-                                <div class="form__group h-5">
-                                    <label for="googleDrivePath">Đường dẫn bài hát</label>
-                                    <input type="text" name="googleDrivePath" id="googleDrivePath" class="form__control"
-                                        placeholder="Link google drive nha">
-                                    <span class="form__warning"></span>
-                                </div>
-
-                                <p class="h-2 text-center" style="font-size: 1.5rem; font-weight: bold;">Hoặc</p>
-
-                                <div class="form__group h-5">
-                                    <label for="devicePath">Chọn từ thiết bị
-                                        <span class="choose__file">Chọn</span>
-                                    </label>
-                                    <input type="file" name="devicePath" id="devicePath"
-                                        accept=".jpg, .png, .gif, .avif, .jpeg, .svg, .webp, .apng"
-                                        class="form__control">
-                                    <span class="form__warning"></span>
-                                </div>
+                            <div class="form__group">
+                                <label for="songPath">Đường dẫn bài hát</label>
+                                <input type="text" name="songPath" rule="required" id="songPath" class="form__control"
+                                    placeholder="Link google drive nha">
+                                <span class="form__warning"></span>
                             </div>
 
                             <div class="row jus-end">
@@ -109,7 +81,7 @@
                         </form>
                     </div>
 
-                    <div class="remove-song active">
+                    <div class="command-song remove-song remove">
                         <div class="row ali-center jus-between p-b-24">
                             <div class="total-song--remove">
                                 <button style="--bg: #ffc0c7; --hover-bg: #ffb3bb">
@@ -130,6 +102,9 @@
                         <div class="row remove-song__container">
                     
                         </div>
+                    </div>
+
+                    <div class="command-song update-song remove">
                     </div>
                 </div>
             </div>

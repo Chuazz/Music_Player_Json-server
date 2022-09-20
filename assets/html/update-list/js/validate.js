@@ -177,7 +177,7 @@ const Validate = function (formId) {
                 return value;
             }, {});
 
-            _this.onSubmit(formData);
+            // _this.onSubmit(formData);
         }
     });
 };

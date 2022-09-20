@@ -29,11 +29,14 @@ const keyShortCut = $$(".key-shortcut");
 const start = $(".time-start");
 const end = $(".time-end");
 const deleteLocal = $(".delete-local");
-// ===============================================================
+// ================================================================
+const addButton = $(".add-song button");
 const removeContainer = $(".remove-song__container");
 const totalSongRemove = $(".total-song--remove span");
+const removeButton = $(".remove-song button");
+const navbar = $(".navbar");
 // ================================================================
-export{
+export {
     $,
     $$,
     APP_CONFIG,
@@ -66,6 +69,9 @@ export{
     playWith,
     deleteLocal,
     // ===================
+    addButton,
     removeContainer,
     totalSongRemove,
+    removeButton,
+    navbar,
 }

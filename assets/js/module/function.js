@@ -44,6 +44,8 @@ export function renderTimeDuration (songList) {
                 songList[i].duration = song.querySelector("audio").duration;
                 song.querySelector(".song__duration p").innerText = convertToMinute(songList[i].duration);
             });
+
+            localStorage.setItem("songList", JSON.stringify(songList));
         });
     }
 }
