@@ -28,20 +28,20 @@
             <div id="update-list">
                 <div id="header">
                     <div class="navbar row ali-center jus-end">
-                        <div style="--bg: #ffc0c7; --hover-bg: #ffb3bb" class="nav-item text-center relative">
+                        <div style="--bg: #fff4a3; --hover-bg: #fff080" class="nav-item text-center active">
                             <p>Sửa 1 bài hát</p>
                         </div>
-                        <div style="--bg: #04aa6d; --hover-bg: #059862" class="nav-item text-center">
+                        <div style="--bg: #ffc0c7; --hover-bg: #ffb3bb" class="nav-item text-center">
                             <p>Xóa bài hát</p>
                         </div>
-                        <div style="--bg: #fff4a3; --hover-bg: #fff080" class="nav-item text-center">
+                        <div style="--bg: #04aa6d; --hover-bg: #059862" class="nav-item text-center">
                             <p>Thêm 1 bài hát</p>
                         </div>
                     </div>
                 </div>
 
                 <div id="content">
-                    <div class="add-song">
+                    <div class="add-song remove">
                         <form action="" method="post" id="add-song-form">
                             <!-- Song name -->
                             <div class="form__group ">
@@ -54,42 +54,82 @@
                             <!-- Song singer -->
                             <div class="form__group">
                                 <label for="fullname">Tên ca sĩ</label>
-                                <input type="fullname" name="fullname" rule="required|fullname" id="fullname" class="form__control"
-                                    placeholder="Phan Mạnh Quỳnh">
+                                <input type="fullname" name="fullname" rule="required|fullname" id="fullname"
+                                    class="form__control" placeholder="Phan Mạnh Quỳnh">
                                 <span class="form__warning"></span>
                             </div>
 
                             <!-- Song img -->
-                            <div class="form__group">
-                                <label for="avatar">Ảnh bài hát
-                                    <span class="choose__file">Chọn</span>
-                                </label>
-                                <input type="file" name="avatar" rule="required" id="avatar"
-                                    accept=".jpg, .png, .gif, .avif, .jpeg, .svg, .webp, .apng" class="form__control">
-                                <span class="form__warning"></span>
+                            <div class="row ali-center">
+                                <div class="form__group h-5">
+                                    <label for="path">Đường dẫn ảnh</label>
+                                    <input type="text" name="path" id="path" placeholder="Link nào cũng được"
+                                        class="form__control path-control">
+                                    <span class="form__warning"></span>
+                                </div>
+
+                                <p class="h-2 text-center" style="font-size: 1.5rem; font-weight: bold;">Hoặc</p>
+
+                                <div class="form__group h-5">
+                                    <label for="devicePathImg">Chọn từ thiết bị
+                                        <span class="choose__file">Chọn</span>
+                                    </label>
+                                    <input type="file" name="devicePathImg" id="devicePathImg"
+                                        accept=".jpg, .png, .gif, .avif, .jpeg, .svg, .webp, .apng"
+                                        class="form__control">
+                                    <span class="form__warning"></span>
+                                </div>
                             </div>
 
                             <!-- Song path -->
-                            <div class="form__group">
-                                <label for="path">Đường dẫn</label>
-                                <div class="row ali-center">
-                                    <div class="h-6">
-                                        <input type="text" name="path" rule="required" id="path" class="form__control"
+                            <div class="row ali-center">
+                                <div class="form__group h-5">
+                                    <label for="googleDrivePath">Đường dẫn bài hát</label>
+                                    <input type="text" name="googleDrivePath" id="googleDrivePath" class="form__control"
                                         placeholder="Link google drive nha">
-                                    </div>
-
-                                    <div class="h-6">
-                                        <input type="file" name="avatar" rule="required" id="avatar"
-                                        accept=".jpg, .png, .gif, .avif, .jpeg, .svg, .webp, .apng" class="form__control">
-                                    </div>
+                                    <span class="form__warning"></span>
                                 </div>
-                                <span class="form__warning"></span>
+
+                                <p class="h-2 text-center" style="font-size: 1.5rem; font-weight: bold;">Hoặc</p>
+
+                                <div class="form__group h-5">
+                                    <label for="devicePath">Chọn từ thiết bị
+                                        <span class="choose__file">Chọn</span>
+                                    </label>
+                                    <input type="file" name="devicePath" id="devicePath"
+                                        accept=".jpg, .png, .gif, .avif, .jpeg, .svg, .webp, .apng"
+                                        class="form__control">
+                                    <span class="form__warning"></span>
+                                </div>
                             </div>
 
                             <div class="row jus-end">
-                                <button style="--bg: #04aa6d; --hover-bg: #059862">Đăng ký</button>
+                                <button style="--bg: #04aa6d; --hover-bg: #059862">Thêm</button>
                             </div>
                         </form>
+                    </div>
+
+                    <div class="remove-song active">
+                        <div class="row ali-center jus-between">
+                            <div class="total-song--remove">
+                                <p>
+                                    Xóa
+                                    <span class="p-l-8 p-r-8"></span>
+                                    bài hát
+                                </p>
+                            </div>
+
+                            <div class="total-song m-0 row ali-center">
+                                <p>
+                                    <span></span>
+                                    <p class="p-l-8">bài hát trong danh sách</p>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="row remove-song__container">
+                    
+                        </div>
                     </div>
                 </div>
             </div>
@@ -103,4 +143,5 @@
         var formValidate = new Validate("#add-song-form");
     </script>
 </body>
+
 </html>
