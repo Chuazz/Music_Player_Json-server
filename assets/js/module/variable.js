@@ -1,7 +1,7 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const APP_CONFIG = "MP3_APP_CONFIG";
-var songList = JSON.parse(localStorage.getItem("songList"));
+const songAPI = "http://localhost:3000/songs";
 
 const header = $("#header");
 const nextSong = $(".next-song span");
@@ -37,7 +37,7 @@ export{
     $,
     $$,
     APP_CONFIG,
-    songList,
+    songAPI,
     // =======================
     header,
     songContainer,

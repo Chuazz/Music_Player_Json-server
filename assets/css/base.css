@@ -27,6 +27,10 @@
     color: #222;
 }
 
+span{
+    color: inherit;
+}
+
 a{
     display: block;
 }
