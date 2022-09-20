@@ -1,4 +1,3 @@
-
 const Validate = function (formId) {
     const formElement = document.querySelector(formId);
     const formRules = {};
@@ -26,7 +25,7 @@ const Validate = function (formId) {
 
         fullname: (value) => {
             var regex = /(^[A-Za-z\p{Ll}]{1,16})([ ]{0,1})([A-Za-z\p{Ll}]{1,16})?([ ]{0,1})?([A-Za-z\p{Ll}]{1,16})?([ ]{0,1})?([A-Za-z\p{Ll}]{1,16})/u;
-            return regex.test(value) ? undefined : "Vui lòng nhập chính xác họ tên của bạn";
+            return regex.test(value) ? undefined : "Vui lòng nhập chính xác tên bài hát";
         },
 
         email: (value) => {
@@ -43,11 +42,16 @@ const Validate = function (formId) {
             var oldPass = formElement.querySelector("[name=password]");
             return value === oldPass.value ? undefined : "Mật khẩu không khớp"
         },
+
+        // oneOfTwo: (value1, value2) => {
+        //     return value1 || value2 ? undefined : "Bạn phải nhập trường này";
+        // },
     };
 
     // Chỉ thực hiện khi tồn tại form
     if (formElement) {
         var inputs = formElement.querySelectorAll("[name][rule]");
+        var oneOfTwos = formElement.querySelectorAll(".path-control")
 
         inputs.forEach(input => {
             var rule = input.getAttribute("rule");
@@ -70,7 +74,7 @@ const Validate = function (formId) {
             else {
                 formRules[input.name] = [validateRules[rule]];
             }
-            // Xử lý sự kiện trên từng input(blur, qinput)
+            // Xử lý sự kiện trên từng input(blur, input)
             input.addEventListener("blur", (e) => {
                 onBlurEvent(e.target);
             });
@@ -83,12 +87,12 @@ const Validate = function (formId) {
 
         // Xử lý sự kiện blur
         function onBlurEvent(input) {
-            var rule = input.name;
+            var name1 = input.name;
             var parentElement = getParentElement(input, ".form__group");
             var error;
 
-            for (var i = 0; i < formRules[rule].length; i++) {
-                var ruleTest = formRules[input.name][i];
+            for (var i = 0; i < formRules[name1].length; i++) {
+                var ruleTest = formRules[name1][i];
 
                 switch (input.type) {
                     case "radio": {
@@ -125,6 +129,7 @@ const Validate = function (formId) {
         // Xử lý sự kiện input
         function onInputEvent(input) {
             var parentElement = getParentElement(input, ".form__group");
+
             parentElement.classList.remove("form__group--invalid");
             parentElement.querySelector(".form__warning").innerText = "";
         }
@@ -168,6 +173,7 @@ const Validate = function (formId) {
                         value[input.name] = input.value;
                         break;
                 }
+
                 return value;
             }, {});
 
