@@ -1,6 +1,7 @@
 import * as myVar from "./module/variable.js";
 import * as myFunc from "./module/function.js";
 
+var songList =  JSON.parse(localStorage.getItem("songList"));
 var likedSong = [];
 var likedSongId = [];
 var songedId = [];
@@ -107,13 +108,14 @@ const myApp = {
                 return response.json();
             })
             .then(data => {
+                localStorage.setItem("songList", JSON.stringify(data));
                 myFunc.renderSong(data, myVar.playlist);
-                this.loadCurrentSong(data);
+                this.loadCurrentSong();
             })
     },
 
     // Hiển thị bài hát hiện tại
-    loadCurrentSong: function (songs = myVar.songList) {
+    loadCurrentSong: function (songs = songList || JSON.parse(localStorage.getItem("songList"))) {
         var currentSong = songs[this.currentIndex];
         var songContents = myVar.$$(".song__item-body");
 
@@ -129,7 +131,6 @@ const myApp = {
             songContents.forEach(songContent => {
                 songContent.classList.remove("active");
             });
-
             songContents[this.currentIndex].classList.add("active");
         }
 
@@ -304,8 +305,9 @@ const myApp = {
     setDefault: function () {
         imgAnimate.finish();
         this.isPlaying = false;
+        this.currentIndex = 0;
         myVar.progess.value = 0;
-        myVar.header.classList.remove("playing");
+        myVar.currSong.classList.remove("playing");
         myVar.start.innerHTML = "00:00";
     },
 
@@ -669,8 +671,14 @@ const myApp = {
 
     // Thực thi chương trình
     start: function () {
-        this.loadSongList();
-
+        if(songList){
+            myFunc.renderSong(songList, myVar.playlist);
+            this.renderConfig();
+            this.loadCurrentSong();
+        }
+        else{
+            this.loadSongList();
+        }
         this.handleEvents();
     }
 };
