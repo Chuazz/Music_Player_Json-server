@@ -15,15 +15,16 @@
     border: none;
 }
 
-.nav-item:hover{
-    background: var(--hovar-bg);
+.nav-item:hover,
+button:hover{
+    background: var(--hover-bg);
 }
 
 .nav-item:nth-child(2){
     margin: 0 24px;
 }
 
-.nav-item:nth-child(2) p{
+.nav-item:last-child p{
     color: #fff;
 }
 /* ================================================= */
@@ -95,6 +96,10 @@ input[type=file]::after{
     transform: translateY(-50%);
 }
 
+.choose__file:hover{
+    opacity: 0.9;
+}
+
 .choose__file:active{
     opacity: 0.7;
 }
@@ -129,4 +134,24 @@ input[type=file]::after{
 .form__group--invalid .choose__file{
     background: rgb(231 49 49);
     color: #f2d7d7;
+}
+/* =========================================================== */
+.remove-song{
+    margin: 36px 0 0 0;
+}
+
+.song__item{
+    flex-basis: 50%;
+    max-width: 50%;
+    padding: 0 12px 24px;
+}
+
+.fa-heart, .fa-download{
+    display: none;
+}
+
+.remove-song__container{
+    margin: 0 -12px;
+    overflow-y: auto;
+    height: 600px;
 }

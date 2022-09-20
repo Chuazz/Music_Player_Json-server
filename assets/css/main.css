@@ -235,7 +235,8 @@ h5 {
     margin-left: 14px;
 }
 
-.total-song {
+.total-song,
+.total-song--remove {
     font-family: 'Concert One', cursive;
     margin-right: 15px;
     font-size: 1.8rem;
