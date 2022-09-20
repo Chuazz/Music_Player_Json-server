@@ -1,6 +1,7 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const APP_CONFIG = "MP3_APP_CONFIG";
+var songList = JSON.parse(localStorage.getItem("songList"));
 
 const header = $("#header");
 const nextSong = $(".next-song span");
@@ -30,23 +31,14 @@ const start = $(".time-start");
 const end = $(".time-end");
 const deleteLocal = $(".delete-local");
 // ===============================================================
-const navBar = $(".navbar");
-const navItems = $$(".navbar li");
-const songForms = $$(".song__form");
-const addBtn = $(".add-btn");
-const inputSongName = $("input[name=songname]");
-const inputSongLink = $("input[name=songlink]");
-const inputSongImg = $("input[name=songimg]");
-const inputSingerName = $("input[name=singername]");
-const deleteBox = $(".delete-song");
-const updateBox = $(".update-song");
-const deleteBtn = $(".delete-btn");
-const formBody = $(".form__body");
+const removeContainer = $(".remove-song__container");
 // ================================================================
 export{
     $,
     $$,
     APP_CONFIG,
+    songList,
+    // =======================
     header,
     songContainer,
     nextSong,
@@ -75,16 +67,5 @@ export{
     playWith,
     deleteLocal,
     // ===================
-    navBar,
-    songForms,
-    addBtn,
-    inputSongName,
-    inputSongLink,
-    inputSongImg,
-    inputSingerName,
-    navItems,
-    deleteBox,
-    updateBox,
-    deleteBtn,
-    formBody,
+    removeContainer,
 }
