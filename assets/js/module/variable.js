@@ -3,7 +3,6 @@ const $$ = document.querySelectorAll.bind(document);
 const APP_CONFIG = "MP3_APP_CONFIG";
 const songAPI = "http://localhost:3000/songs";
 
-const header = $("#header");
 const nextSong = $(".next-song span");
 const songContainer = $(".song-container");
 const currSong = $(".current-song");
@@ -32,6 +31,7 @@ const end = $(".time-end");
 const deleteLocal = $(".delete-local");
 // ===============================================================
 const removeContainer = $(".remove-song__container");
+const totalSongRemove = $(".total-song--remove span");
 // ================================================================
 export{
     $,
@@ -39,7 +39,6 @@ export{
     APP_CONFIG,
     songAPI,
     // =======================
-    header,
     songContainer,
     nextSong,
     currSong,
@@ -68,4 +67,5 @@ export{
     deleteLocal,
     // ===================
     removeContainer,
+    totalSongRemove,
 }
