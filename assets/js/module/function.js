@@ -84,7 +84,9 @@ export function renderSong(songList, selector) {
         `;
     });
 
-    myVar.totalSong.innerHTML = songList.length;
+    if(myVar.totalSong){
+        myVar.totalSong.innerHTML = songList.length;
+    }
     selector.innerHTML = html.join("");
     renderTimeDuration(songList);
 };
