@@ -2,7 +2,6 @@ import * as myVar from "./module/variable.js";
 import * as myFunc from "./module/function.js";
 
 const songAPI = "http://localhost:3000/songs";
-var songList = JSON.parse(localStorage.getItem("songList"));
 var likedSong = [];
 var likedSongId = [];
 var songedId = [];
@@ -109,14 +108,14 @@ const myApp = {
                 return response.json();
             })
             .then(data => {
-                songList = localStorage.setItem("songList", JSON.stringify(data));
+                localStorage.setItem("songList", JSON.stringify(data));
                 myFunc.renderSong(data, myVar.playlist);
-                this.loadCurrentSong(songList);
+                this.loadCurrentSong(data);
             })
     },
 
     // Hiển thị bài hát hiện tại
-    loadCurrentSong: function (songs = songList || JSON.parse(localStorage.getItem("songList"))) {
+    loadCurrentSong: function (songs = myVar.songList || JSON.parse(localStorage.getItem("songList"))) {
         var currentSong = songs[this.currentIndex];
         var songContents = myVar.$$(".song__item-body");
 
@@ -672,8 +671,8 @@ const myApp = {
 
     // Thực thi chương trình
     start: function () {
-        if(songList){
-            myFunc.renderSong(songList, myVar.playlist);
+        if(myVar.songList){
+            myFunc.renderSong(myVar.songList, myVar.playlist);
             this.loadCurrentSong();
             this.renderConfig();
         }
