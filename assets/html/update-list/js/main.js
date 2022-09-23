@@ -1,20 +1,20 @@
-import { countElementTime, renderSong } from "../../../js/module/function.js";
-import { $, $$, addButton, navbar, removeContainer, songAPI, totalSongRemove } from "../../../js/module/variable.js";
+import { convertDriveLink, convertToMinute, countElementTime, CountFromID, renderSong } from "../../../js/module/function.js";
+import { $, $$, addButton, navbar, removeButton, removeContainer, songAPI, totalSongRemove } from "../../../js/module/variable.js";
 
 var songList = JSON.parse(localStorage.getItem("songList"));
 var checkedSong = [];
 
 const app = {
     // Lấy danh sách bài hát
-    // loadSongList: function () {
-    //     fetch(songAPI)
-    //         .then(response => {
-    //             return response.json();
-    //         })
-    //         .then(data => {
-    //             renderSong(data, removeContainer);
-    //         })
-    // },
+    loadSongList: function () {
+        fetch(songAPI)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                renderSong(data, removeContainer);
+            })
+    },
 
     handleEvents: function () {
         // Chọn bài hát cần xóa
@@ -27,10 +27,20 @@ const app = {
                 checkedSong.push(Number(songItem.dataset.index));
                 checkedSong = checkedSong.filter((value) => {
                     return countElementTime(checkedSong, value) === 1;
-                })
+                });
             }
+        });
 
-            console.log(checkedSong);
+        // Bấm để xóa
+        removeButton.addEventListener("click", () => {
+            var songItem = $$(".song__item");
+            // var isSure = confirm("Bạn chắc chắn xóa những bài đã chọn ?");
+            // if (isSure) {
+                checkedSong.forEach(songId => {
+                    songItem[songId - 1].remove();
+                    songList.splice(songId - 1, 1);
+                });
+            // }
         });
 
         // Chuyển tab
@@ -50,21 +60,26 @@ const app = {
             }
         });
 
-        // Thêm bài hát
+        // Bấm để thêm bài hát
         addButton.addEventListener("click", () => {
             var song = {
+                id: songList.length + 1,
                 name: $("input[name=songName]").value,
                 singer: $("input[name=singerName]").value,
                 path: $("input[name=songPath]").value,
                 image: $("input[name=songImg]").value,
                 duration: null,
-            };
+            }
 
-
-            this.addSong(song);
+            if (JSON.parse(sessionStorage.getItem("error"))) {
+                songList.push(song);
+                localStorage.setItem("songList", JSON.stringify(songList));
+                this.addSong(song);
+            }
         });
     },
 
+    // Xử lý thêm bài hát
     addSong: function (song) {
         var options = {
             method: "POST",
@@ -77,7 +92,27 @@ const app = {
 
         fetch(songAPI, options)
             .then((response) => response.json())
-            .catch(error => console.log(error))
+            .then(() => alert("Thêm bài hát thành công"));
+    },
+
+    // Xử lý xóa bài hát
+    removeSong: function (id) {
+        var options = {
+            method: "DELETE",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+
+        };
+        return;
+        fetch(`${songAPI}/${id}`, options)
+            .then(response => response.json())
+            .then(() => {
+                songItem[id - 1].remove();
+                songList.splice(id - 1, 1);
+                localStorage.setItem("songList", JSON.stringify(songList));
+            })
     },
 
     start: function () {

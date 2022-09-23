@@ -43,9 +43,10 @@ const Validate = function (formId) {
             return value === oldPass.value ? undefined : "Mật khẩu không khớp"
         },
 
-        // oneOfTwo: (value1, value2) => {
-        //     return value1 || value2 ? undefined : "Bạn phải nhập trường này";
-        // },
+        driveLink: (value) => {
+            return value.startsWith("https://drive.google.com/file/d/")
+                && value.endsWith("/view?usp=sharing") ? undefined : "Link drive không hợp lệ"
+        },
     };
 
     // Chỉ thực hiện khi tồn tại form
@@ -122,7 +123,8 @@ const Validate = function (formId) {
                 parentElement.classList.add("form__group--invalid");
                 parentElement.querySelector(".form__warning").innerText = error;
             }
-
+            
+            sessionStorage.setItem("error", JSON.stringify(!error));
             return !error;
         }
 
