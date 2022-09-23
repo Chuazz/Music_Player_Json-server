@@ -1,11 +1,11 @@
 import * as myVar from "./variable.js";
 
 // Chuyển đổi drive link để chạy nhạc được
-export function convertDriveLink(importLink){
+export function convertDriveLink(importLink) {
     var finalLink = "";
     var concatLink = "http://docs.google.com/uc?export=open&id=";
 
-    if(importLink.startsWith("https://drive.google.com/file/d/") && importLink.endsWith("/view?usp=sharing")){
+    if (importLink.startsWith("https://drive.google.com/file/d/") && importLink.endsWith("/view?usp=sharing")) {
         var driveLink = importLink;
         var linkId = driveLink.split('/');
 
@@ -15,18 +15,18 @@ export function convertDriveLink(importLink){
     return undefined;
 }
 
-export function addZeroBefore (number) {
-    if(number < 10){
+export function addZeroBefore(number) {
+    if (number < 10) {
         number = `0${number}`;
     }
     return number;
 };
 
-export function convertToMinute (second) {
+export function convertToMinute(second) {
     var minute = addZeroBefore(Math.floor(second / 60));
     var second = addZeroBefore(Math.floor(second % 60));
 
-    if(second >= 60){
+    if (second >= 60) {
         second = 0;
         minute += 1;
     }
@@ -34,30 +34,36 @@ export function convertToMinute (second) {
     return `${minute}:${second}`;
 };
 
-export function renderTimeDuration (songList) {
+export function renderTimeDuration(songList) {
     var audio = document.createElement("audio");
-    audio.src = convertDriveLink(songList[0].path);
+    var songItem = myVar.$$(".song__item");
+    var dem = 0;
 
-    if(songList[0].duration === null){
-        audio.addEventListener("loadedmetadata", () => {
-            myVar.$$(".song__item").forEach((song, i) => {
-                songList[i].duration = song.querySelector("audio").duration;
-                song.querySelector(".song__duration p").innerText = convertToMinute(songList[i].duration);
+    for (let i = 0; i < songList.length; i++) {
+        const song = songList[i];
+        audio.src = convertDriveLink(song.path);
+
+        if(song.duration === null){
+            audio.addEventListener("loadedmetadata", () => {
+                song.duration = audio.duration;
+                songItem[i].querySelector(".song__duration p").innerText = convertToMinute(song.duration);
             });
+        }
 
-            localStorage.setItem("songList", JSON.stringify(songList));
-        });
+        if(dem < songList.length - 1){
+            audio.src = convertDriveLink(songList[dem+=1].path);
+        }
     }
 }
 
 export function renderSong(songList, selector) {
-    var html = songList.sort((a, b) => a.id - b.id).map((song) => {
+    var html = songList.sort((a, b) => a.id - b.id).map((song, i) => {
         return `
         <div class="song__item">
-            <div class="song__item-body" data-index="${song.id}">
+            <div class="song__item-body" data-index="${i+1}" data-songId="${song.id}">
                 <div class="row ali-center h-100">
                     <div>
-                        <p class="song-id">${addZeroBefore(song.id)}</p>
+                        <p class="song-id">${addZeroBefore(i+1)}</p>
                         <audio src="${convertDriveLink(song.path)}"></audio>
                     </div>
 
@@ -88,20 +94,20 @@ export function renderSong(songList, selector) {
         `;
     });
 
-    if(myVar.totalSong){
+    if (myVar.totalSong) {
         myVar.totalSong.innerHTML = songList.length;
     }
     selector.innerHTML = html.join("");
     renderTimeDuration(songList);
 };
 
-export function countElementTime(list, x){
+export function countElementTime(list, x) {
     var count = 0;
 
     for (let i = 0; i < list.length; i++) {
         const value = list[i];
 
-        if(value == x){
+        if (value == x) {
             count++;
         }
     }
@@ -109,24 +115,23 @@ export function countElementTime(list, x){
 }
 
 // Tính toán lại Id bài hát khi thêm xóa
-export function CountFromID(id, songList){
-    var songContents = myVar.$$(".song__content-body");
-    var songId = myVar.$$(".song__content-body .song-id");
+export function CountFromID(id, songList) {
+    var songItem = myVar.$$(".song__item-body");
+    var songId = myVar.$$(".song__item-body .song-id");
 
-    for (let i = 0; i < songList.length; i++) {
+    for (let i = id; i < songList.length; i++) {
         const song = songList[i];
-        if(i >= id){
-            song.id -= 1;
-            songContents[i].dataset.index = `${song.id}`;
-            songId[i].innerHTML = this.addZeroBefore(song.id);
-        }
+
+        song.id -= 2;
+        songId[i].innerHTML = song.id;
+        songItem[i].dataset.index = `${song.id}`;
     }
 }
 
 // Lấy ra phần tử cha
-export function getParentElement(element, parent){
-    while(element.parentElement){
-        if(element.parentElement.matches(parent)){
+export function getParentElement(element, parent) {
+    while (element.parentElement) {
+        if (element.parentElement.matches(parent)) {
             return element.parentElement;
         }
 
