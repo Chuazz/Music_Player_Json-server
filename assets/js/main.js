@@ -1,7 +1,6 @@
 import * as myVar from "./module/variable.js";
 import * as myFunc from "./module/function.js";
 
-// var songList = JSON.parse(localStorage.getItem("songList"));
 var likedSong = [];
 var likedSongId = [];
 var songedId = [];
@@ -53,6 +52,10 @@ imgAnimate.pause();
             this.currentIndex = this.config.currentIndex || this.currentIndex;
             myVar.audio.muted = this.config.isMute;
     
+            if(this.currentIndex >= songList.length){
+                this.currentIndex = 0;
+            }
+
             if (this.config.likedSongId) {
                 likedSongId = this.config.likedSongId;
                 likedSong = this.config.likedSong;
@@ -104,21 +107,7 @@ imgAnimate.pause();
             this.scrollToSong();
         },
     
-        // Lấy danh sách bài hát
-        // loadSongList: function () {
-        //     fetch(myVar.songAPI)
-        //         .then(response => {
-        //             return response.json();
-        //         })
-        //         .then(data => {
-        //             localStorage.setItem("songList", JSON.stringify(data));
-        //             myFunc.renderSong(data, myVar.playlist);
-        //             this.loadCurrentSong();
-        //         })
-        // },
-    
         // Hiển thị bài hát hiện tại
-        // loadCurrentSong: function (songs = songList || JSON.parse(localStorage.getItem("songList"))) {
         loadCurrentSong: function (songs = songList) {
             var currentSong = songs[this.currentIndex];
             var songContents = myVar.$$(".song__item-body");
